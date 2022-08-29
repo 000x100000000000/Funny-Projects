@@ -1,0 +1,31 @@
+#The purpose of this program is to get updates from the target website without opening the actual website.
+
+import re
+import requests
+
+#Pretenting a broswer, no need to change anything.
+headers = {'user-agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'}
+
+#Change to the website needed to workon.
+url = "https://91porny.com/video"
+
+#Request content from the target website.
+content = requests.get(url)
+
+#Converting the information into readable information.
+get_content = content.text
+
+#Information that we needed
+res = r"<a.*?title=.*?href=.*?>(.*?)<\/a>"
+
+#Extracting the target information.
+result = re.findall(res, get_content)
+
+counter = 1
+
+#print(get_content)
+for u in result:
+
+    print (counter,":",u)
+
+    counter+=1
